@@ -1,0 +1,35 @@
+
+volumes:  
+    datavol1:
+      name: datavol1
+    datavol2:
+      name: datavol2
+
+networks:
+  mynetwork1:
+    name: mynetwork1
+    driver: bridge
+
+
+services:
+  mynginx:
+    #container_name: nginx-container
+    image: nginx
+    ports: 
+      - "80"
+    volumes: 
+      - datavol1:/v1
+      - datavol2:/v2
+    networks:
+      - mynetwork1
+
+
+  apache:
+    container_name: apache-container
+    image: php:8.0-apache
+    ports: [ "8090:80" ]
+    volumes: 
+      - datavol1:/v1
+      - datavol2:/v2
+    networks:
+      - mynetwork1
