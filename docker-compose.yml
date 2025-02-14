@@ -23,7 +23,7 @@ services:
     networks:
       - mynetwork1
 
-
+#this is to test if the changes is applied in Git
   apache:
     container_name: apache-container
     image: php:8.0-apache
